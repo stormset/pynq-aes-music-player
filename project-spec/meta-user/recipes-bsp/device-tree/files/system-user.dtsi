@@ -1,0 +1,55 @@
+/include/ "system-conf.dtsi"
+/ {
+
+	axidma_chrdev1: axidma_chrdev@1 {
+	    compatible = "xlnx,axidma-chrdev";
+	    dmas = <&{/amba_pl/dma@40414000} 0 &{/amba_pl/dma@40414000} 1>;
+	    dma-names = "axidma1_tx_channel", "axidma1_rx_channel";
+	    index = <0x01>;
+	};
+
+	axidma_chrdev2: axidma_chrdev@2 {
+	    compatible = "xlnx,axidma-chrdev";
+	    dmas = <&{/amba_pl/dma@40410000} 0 &{/amba_pl/dma@40410000} 1>;
+	    dma-names = "axidma2_tx_channel", "axidma2_rx_channel";
+	    index = <0x02>;
+	};
+
+	axidma_chrdev3: axidma_chrdev@3 {
+	    compatible = "xlnx,axidma-chrdev";
+	    dmas = <&{/amba_pl/dma@40418000} 0>;
+	    dma-names = "axidma3_tx_channel";
+	    index = <0x03>;
+	};
+};
+
+
+&{/amba_pl/dma@40414000/dma-channel@40414000} {
+    xlnx,device-id = <0x00>;
+};
+
+&{/amba_pl/dma@40414000/dma-channel@40414030} {
+    xlnx,device-id = <0x01>;
+};
+
+&{/amba_pl/dma@40410000/dma-channel@40410000} {
+    xlnx,device-id = <0x00>;
+};
+
+&{/amba_pl/dma@40410000/dma-channel@40410030} {
+    xlnx,device-id = <0x01>;
+};
+
+&{/amba_pl/dma@40418000/dma-channel@40418000} {
+    xlnx,device-id = <0x00>;
+};
+
+&{/amba_pl/axi_fifo_mm_s@43c10000} {
+    xlnx,rx-min-pkt-size = <255>;
+    xlnx,tx-max-pkt-size = <257>;
+};
+
+&sdhci0 {
+    broken-cd;
+    wp-inverted;
+};

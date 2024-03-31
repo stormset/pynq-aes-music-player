@@ -1,0 +1,14 @@
+menu "user packages " 
+config axis-fifo  
+	 bool "axis-fifo"
+	 help
+
+config xilinx-axidma  
+	 bool "xilinx-axidma"
+	 help
+	
+config peekpoke  
+	 bool "peekpoke"
+	 help
+	
+endmenu
